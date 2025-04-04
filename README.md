@@ -31,49 +31,38 @@ Patient search and retrieval: Search for patients by name, ID, or other criteria
 Patient profile: View and update patient information.
 Medical history: Record and track patient medical history, including diagnoses, treatments, and allergies.
 Medical records: upload and store medical records.
-Doctor Management:
+## Doctor Management:
 Doctor registration: Register doctors with their specialization and contact information.
 Doctor profile: View and update doctor information.
 Appointment scheduling: Manage doctor schedules and appointments.
 Patient records access: Access and update patient medical records.
 Prescription management: Generate and manage patient prescriptions.
-Appointment Scheduling:
+## Appointment Scheduling:
 Online appointment booking: Allow patients to book appointments online.
 Appointment reminders: Send appointment reminders to patients.
 Appointment management: View, update, and cancel appointments.
 Appointment list viewable by doctors.
-Inventory Management:
-Inventory tracking: Track the quantity and location of medications and supplies.
-Inventory alerts: Generate alerts for low inventory levels.
-Inventory reports: Generate reports on inventory usage and stock levels.
-Add, remove and update inventory items.
-Billing and Payments:
+
+## Billing and Payments:
 Bill generation: Generate patient bills based on services rendered.
 Payment processing: Process patient payments and generate receipts.
 Payment history: View and track patient payment history.
 Reporting of financial data.
-Reporting and Analytics:
+## Reporting and Analytics:
 Patient statistics: Generate reports on patient demographics and medical conditions.
 Doctor performance: Generate reports on doctor performance and patient load.
 Financial reports: Generate reports on hospital revenue and expenses.
 Inventory usage reports.
-User Authentication and Authorization:
+## User Authentication and Authorization:
 User login: Secure login for patients, doctors, and administrators.
 Role-based access control: Restrict access to specific features based on user roles.
 Password management.
-Admin Panel:
+## Admin Panel:
 User management: add, edit, delete users.
 System Configuration.
 Database management.
-Database Design (Conceptual):
 
-Patients: (patient_id, name, address, contact, dob, medical_history, etc.)
-Doctors: (doctor_id, name, specialization, contact, schedule, etc.)
-Appointments: (appointment_id, patient_id, doctor_id, appointment_date, appointment_time, etc.)
-Inventory: (item_id, item_name, quantity, price, etc.)
-Bills: (bill_id, patient_id, bill_date, total_amount, payment_status, etc.)
-Users: (user_id, username, password, role, etc.)
-Development Process:
+## Development Process:
 
 Requirements Analysis: Gather and document detailed requirements.
 Design: Design the database schema, user interface, and system architecture.
