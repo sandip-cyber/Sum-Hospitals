@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Billing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            position: relative;
+        }
+    
+        .billing-container {
+            background: white;
+            padding: 20px;
+            width: 500px;
+            height: 600px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+        }
+        .hospital-name {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .logo {
+            margin-left: 6%;
+            width: 100px;
+            height: 90px;
+            background: url('logo.png') no-repeat center center;
+            background-size: cover;
+            position: absolute;
+            top: 25px;
+            left: 10px;
+        }
+        .logo1{
+            right: 0px;
+            width: 150px;
+            top: 0px;
+            position:absolute;
+            
+
+        }
+        .patient-box, .service-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: left;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .service-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .service-table th, .service-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .service-table th {
+            background: #f2f2f2;
+        }
+        .total-box {
+            border-top: 2px solid #333;
+            margin-top: 10px;
+            padding-top: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        
+        
+    </style>
+</head>
+<body>
+    <div class="billing-container">
+        <div class="header">
+            <div class="logo"></div>
+            <h2 class="hospital-name">SUM Hospital</h2>
+            <p>Location: Nayapali, BBSR</p>
+            <p>Tel: 7077866389</p>
+            <img class="logo" src="picture/WhatsApp Image 2025-03-28 at 11.37.43_dcb5b4f5.jpg" alt="">
+            <img class="logo1" src="picture/download.png">
+        </div>
+        
+        <div class="patient-box">
+            <p><strong>Name:</strong> <span id="userNameDisplay"></span></p>
+            <p><strong>ID:</strong> <span id="userIdDisplay"></span></p>
+            <p><strong>Date:</strong> <span id="date"></span></p>
+        </div>
+        
+        <div class="service-box">
+            <p><strong>Services & Charges:</strong></p>
+            <table class="service-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Amount </th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        
+        <p class="total-box">Total Amount: <span id="total"></span></p>
+    </div>
+    
+    <script>
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            const testData = JSON.parse(decodeURIComponent(params.get("data")));
+            const totalAmount = params.get("total");
+            const userId = params.get("userId");
+            const userName = params.get("userName");
+
+            if (userName) {
+                document.getElementById("userNameDisplay").textContent = userName;
+            }
+            if (userId) {
+                document.getElementById("userIdDisplay").textContent = userId;
+            }
+            
+            const tableBody = document.querySelector(".service-table tbody");
+            tableBody.innerHTML = "";
+
+            testData.forEach(test => {
+                let row = `<tr><td>${test.name}</td><td>${test.cost}</td></tr>`;
+                tableBody.innerHTML += row;
+            });
+
+            document.getElementById("total").innerText = totalAmount;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("date").innerText = new Date().toLocaleDateString();
+            getQueryParams();
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        });
+    </script>
+</body>
+</html>
